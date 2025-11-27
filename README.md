@@ -179,7 +179,6 @@ The PowerShell script parses the output and extracts the relevant information.
 ## 🙏 Credits
 
 - **Created by**: [iamrealguexoxo](https://github.com/iamrealguexoxo) 🎭
-- **Inspired by**: [wifi-passview](https://github.com/warengonzaga/wifi-passview) by Waren Gonzaga
 - **Style from**: BartsTOK & DeadMan projects
 
 ## 📜 License
