@@ -7,7 +7,7 @@
 .AUTHOR
     iamrealguexoxo
 .VERSION
-    1.0.0
+    1.1.0
 .LICENSE
     MIT License
 #>
@@ -21,7 +21,7 @@ param(
 # Configuration
 # ============================================
 $script:AppName = "WlanPasswords"
-$script:AppVersion = "1.0.0"
+$script:AppVersion = "1.1.0"
 $script:Author = "iamrealguexoxo"
 $script:GitHub = "https://github.com/iamrealguexoxo/wlanpasswords"
 

@@ -7,7 +7,7 @@ param(
 
 $repoOwner = "iamrealguexoxo"
 $repoName = "wlanpasswords"
-$localVersion = "1.0.0"
+$localVersion = "1.1.0"
 
 function Write-Status {
     param([string]$msg, [string]$color = "White")

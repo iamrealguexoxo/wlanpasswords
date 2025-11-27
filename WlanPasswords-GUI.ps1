@@ -6,7 +6,7 @@
 .AUTHOR
     iamrealguexoxo
 .VERSION
-    1.0.0
+    1.1.0
 #>
 
 # Add required assemblies
@@ -18,7 +18,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Configuration
 # ============================================
 $script:AppName = "WlanPasswords"
-$script:AppVersion = "1.0.0"
+$script:AppVersion = "1.1.0"
 $script:GitHub = "https://github.com/iamrealguexoxo/wlanpasswords"
 $script:credentials = @()
 
@@ -145,7 +145,7 @@ function Show-MessageBox {
 $xaml = @"
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="WlanPasswords v1.0.0" 
+        Title="WlanPasswords v1.1.0" 
         Height="650" 
         Width="950"
         MinHeight="500"

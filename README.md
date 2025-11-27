@@ -1,4 +1,4 @@
-# 📶 WlanPasswords v1.0.0 📶
+# 📶 WlanPasswords v1.1.0 📶
 
 > **Extract all your saved WLAN passwords with one click!** 🔐  
 > *A PowerShell-based tool for Windows to recover WiFi passwords easily.*
@@ -9,6 +9,14 @@ A Windows-based WLAN password extraction tool that reads all saved WiFi credenti
 ![Windows](https://img.shields.io/badge/Windows-10%2F11-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
+## 🆕 What's New in v1.1.0
+
+- **🖥️ Modern WPF GUI** - Beautiful dark theme interface
+- **🔍 Search Filter** - Filter networks by SSID name
+- **📋 Copy to Clipboard** - One-click password copying
+- **🔄 Auto-Update Check** - Version checker in About page
+- **🎨 Fresh Design** - Modern dark theme with accent colors
+
 ## 🎯 Features
 
 ### Core Features
@@ -18,6 +26,13 @@ A Windows-based WLAN password extraction tool that reads all saved WiFi credenti
 - **Interactive Menu**: Easy-to-use console interface
 - **Silent Mode**: Run non-interactively with command-line parameters
 - **About Page**: With Bart Simpson ASCII art! 🎭
+
+### GUI Features (NEW!)
+- **Modern Dark Theme**: Easy on the eyes
+- **DataGrid View**: See all networks at a glance
+- **Live Search**: Filter networks as you type
+- **One-Click Copy**: Copy passwords to clipboard instantly
+- **Export All**: Save all passwords to desktop
 
 ### Language Support
 - Works with English and German Windows installations
@@ -48,6 +63,15 @@ A Windows-based WLAN password extraction tool that reads all saved WiFi credenti
    ```
 
 2. **Run the Tool**
+   
+   **GUI Version (Recommended):**
+   - Double-click `run-gui.bat`
+   - OR: Run directly in PowerShell:
+     ```powershell
+     .\WlanPasswords-GUI.ps1
+     ```
+
+   **CLI Version:**
    - Double-click `run.bat`
    - OR: Right-click `run.bat` → "Run as administrator"
    - OR: Run directly in PowerShell:
@@ -74,7 +98,7 @@ A Windows-based WLAN password extraction tool that reads all saved WiFi credenti
 
 ```
 ========================================
-    WiFi WlanPasswords v1.0.0
+    WiFi WlanPasswords v1.1.0
 ========================================
 
   by iamrealguexoxo
@@ -102,12 +126,16 @@ A Windows-based WLAN password extraction tool that reads all saved WiFi credenti
 
 ```
 wlanpasswords/
-├── WlanPasswords.ps1    # Main PowerShell script
-├── run.bat              # Windows batch launcher
-├── README.md            # This file
-├── README_DE.md         # German documentation
-├── LICENSE              # MIT License
-└── .gitignore           # Git ignore rules
+├── WlanPasswords.ps1      # Main CLI PowerShell script
+├── WlanPasswords-GUI.ps1  # Modern WPF GUI (NEW!)
+├── run.bat                # CLI launcher
+├── run-gui.bat            # GUI launcher (NEW!)
+├── check-updates.ps1      # Version checker
+├── check-updates.bat      # Version checker launcher
+├── README.md              # This file
+├── README_DE.md           # German documentation
+├── LICENSE                # MIT License
+└── .gitignore             # Git ignore rules
 ```
 
 ## 📄 Export Format
