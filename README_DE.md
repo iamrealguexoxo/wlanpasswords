@@ -179,7 +179,6 @@ Das PowerShell-Skript analysiert die Ausgabe und extrahiert die relevanten Infor
 ## 🙏 Credits
 
 - **Erstellt von**: [iamrealguexoxo](https://github.com/iamrealguexoxo) 🎭
-- **Inspiriert von**: [wifi-passview](https://github.com/warengonzaga/wifi-passview) von Waren Gonzaga
 - **Stil von**: BartsTOK & DeadMan Projekten
 
 ## 📜 Lizenz
