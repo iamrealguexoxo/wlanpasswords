@@ -250,6 +250,44 @@ function Export-WlanCredentials {
     }
 }
 
+function Check-Version {
+    <#
+    .SYNOPSIS
+        Check for updates from GitHub API (silent mode)
+    #>
+    try {
+        $apiUrl = "https://api.github.com/repos/iamrealguexoxo/wlanpasswords/releases/latest"
+        $response = Invoke-RestMethod -Uri $apiUrl -Method Get -ErrorAction Stop
+        
+        if ($null -eq $response.tag_name -or [string]::IsNullOrWhiteSpace($response.tag_name)) {
+            return $null
+        }
+        
+        $latestVersion = $response.tag_name -replace 'v', ''
+        
+        try {
+            $localVer = [version]$script:AppVersion
+            $remoteVer = [version]$latestVersion
+            
+            if ($remoteVer -gt $localVer) {
+                return @{
+                    UpdateAvailable = $true
+                    LocalVersion = $script:AppVersion
+                    RemoteVersion = $latestVersion
+                    ReleaseUrl = $response.html_url
+                    ReleaseDate = [DateTime]::Parse($response.published_at).ToString("yyyy-MM-dd")
+                }
+            }
+        } catch {
+            return $null
+        }
+        
+        return $null
+    } catch {
+        return $null
+    }
+}
+
 function Show-SingleProfile {
     <#
     .SYNOPSIS
@@ -288,7 +326,7 @@ function Show-SingleProfile {
 function Show-About {
     <#
     .SYNOPSIS
-        Show about information with Bart ASCII art
+        Show about information with Bart ASCII art and version check
     #>
     Clear-Host
     Write-Host ""
@@ -306,6 +344,28 @@ function Show-About {
     Write-Host "  Author:  $script:Author" -ForegroundColor White
     Write-Host "  GitHub:  $script:GitHub" -ForegroundColor Cyan
     Write-Host ""
+    
+    # Check for updates
+    Write-Host "  Checking for updates..." -ForegroundColor DarkGray
+    $updateInfo = Check-Version
+    
+    if ($null -ne $updateInfo -and $updateInfo.UpdateAvailable) {
+        Write-Host ""
+        Write-Host "========================================" -ForegroundColor Green
+        Write-Host "  UPDATE AVAILABLE!" -ForegroundColor Green
+        Write-Host "========================================" -ForegroundColor Green
+        Write-Host ""
+        Write-Host "  Current:  v$($updateInfo.LocalVersion)" -ForegroundColor Yellow
+        Write-Host "  Latest:   v$($updateInfo.RemoteVersion)" -ForegroundColor Green
+        Write-Host "  Released: $($updateInfo.ReleaseDate)" -ForegroundColor White
+        Write-Host ""
+        Write-Host "  Download: $($updateInfo.ReleaseUrl)" -ForegroundColor Cyan
+        Write-Host ""
+    } else {
+        Write-Host "  [OK] You are running the latest version" -ForegroundColor Green
+        Write-Host ""
+    }
+    
     Write-Host "========================================" -ForegroundColor Cyan
     Write-Host ""
     Write-Host "  This tool extracts saved WLAN passwords" -ForegroundColor Gray
