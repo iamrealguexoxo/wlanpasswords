@@ -7,13 +7,13 @@ setlocal enabledelayedexpansion
 REM Get the directory of this batch file
 set "SCRIPT_DIR=%~dp0"
 
-REM Check if running as Administrator
+REM ========== AUTO-ELEVATE TO ADMIN ==========
+REM Check if already running as admin
 net session >nul 2>&1
 if %errorlevel% neq 0 (
-    echo This application requires Administrator privileges.
-    echo Please run this batch file as Administrator.
-    pause
-    exit /b 1
+    echo Requesting administrator privileges...
+    powershell -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
+    exit /b
 )
 
 REM Run the PowerShell GUI script

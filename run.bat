@@ -2,6 +2,15 @@
 title WlanPasswords - WLAN Password Extraction Tool
 cd /d "%~dp0"
 
+REM ========== AUTO-ELEVATE TO ADMIN ==========
+REM Check if already running as admin
+net session >nul 2>&1
+if %errorlevel% neq 0 (
+    echo Requesting administrator privileges...
+    powershell -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
+    exit /b
+)
+
 REM Check if PowerShell is available by checking common locations
 if exist "%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" (
     goto :run_script
