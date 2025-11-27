@@ -78,7 +78,8 @@ function Get-WlanProfiles {
         
         $profileNames = @()
         foreach ($line in $profiles) {
-            if ($line -match "All User Profile\s*:\s*(.+)$" -or $line -match "Profil f.+r alle Benutzer\s*:\s*(.+)$") {
+            # English: "All User Profile" | German: "Profil für alle Benutzer"
+            if ($line -match "All User Profile\s*:\s*(.+)$" -or $line -match "Profil für alle Benutzer\s*:\s*(.+)$") {
                 $profileNames += $matches[1].Trim()
             }
         }
@@ -110,9 +111,8 @@ function Get-WlanPassword {
         
         $password = $null
         foreach ($line in $profileInfo) {
-            # English: Key Content
-            # German: Schluesselinhalt
-            if ($line -match "Key Content\s*:\s*(.+)$" -or $line -match "Schl.sselinhalt\s*:\s*(.+)$") {
+            # English: Key Content | German: Schlüsselinhalt
+            if ($line -match "Key Content\s*:\s*(.+)$" -or $line -match "Schlüsselinhalt\s*:\s*(.+)$") {
                 $password = $matches[1].Trim()
                 break
             }
