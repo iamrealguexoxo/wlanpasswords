@@ -313,7 +313,7 @@ $xaml = @"
                     <Run Text="by "/><Run Text="iamrealguexoxo" Foreground="#e94560"/><Run Text=" | github.com/iamrealguexoxo/wlanpasswords"/>
                 </TextBlock>
                 
-                <TextBlock Name="VersionText" Text="v1.0.0" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                <TextBlock Name="VersionText" Text="v1.1.0" HorizontalAlignment="Right" VerticalAlignment="Center" 
                           Foreground="#666" FontSize="11"/>
             </Grid>
         </Border>
@@ -331,17 +331,17 @@ function Load-Credentials {
     
     try {
         $script:credentials = Get-AllWlanCredentials
-        
-        if ($null -eq $script:credentials -or $script:credentials.Count -eq 0) {
+
+        if ($null -eq $script:credentials -or @($script:credentials).Count -eq 0) {
             $statusText.Text = "No WLAN profiles found"
             $statusText.Foreground = [System.Windows.Media.Brushes]::Red
-            $countText.Text = "Networks: 0"
+            $countText.Text = "0"
             $credentialsGrid.ItemsSource = @()
             return
         }
-        
-        $credentialsGrid.ItemsSource = $script:credentials
-        $countText.Text = "Networks: $($script:credentials.Count)"
+
+        $credentialsGrid.ItemsSource = @($script:credentials)
+        $countText.Text = "$(@($script:credentials).Count)"
         $statusText.Text = "Ready"
         $statusText.Foreground = [System.Windows.Media.Brushes]::Green
     }
@@ -355,12 +355,12 @@ function Filter-Credentials {
     param([string]$SearchTerm)
     
     if ([string]::IsNullOrWhiteSpace($SearchTerm)) {
-        $credentialsGrid.ItemsSource = $script:credentials
+        $credentialsGrid.ItemsSource = @($script:credentials)
         return
     }
-    
+
     $filtered = $script:credentials | Where-Object { $_.SSID -like "*$SearchTerm*" }
-    $credentialsGrid.ItemsSource = $filtered
+    $credentialsGrid.ItemsSource = @($filtered)
 }
 
 function Show-SelectedPassword {
@@ -397,7 +397,7 @@ function Export-AllPasswords {
         $content += " Generated: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
         $content += "============================================"
         $content += ""
-        $content += "Total profiles found: $($script:credentials.Count)"
+        $content += "Total profiles found: $(@($script:credentials).Count)"
         $content += ""
         $content += "============================================"
         
@@ -434,7 +434,7 @@ function Show-About {
         $updateText = "`n`n[OK] You are running the latest version"
     }
     
-    $aboutText = "WlanPasswords v1.0.0`n`nModern WPF GUI for extracting and managing saved WLAN passwords on Windows.`n`nAuthor: iamrealguexoxo`nGitHub: https://github.com/iamrealguexoxo/wlanpasswords`nLicense: MIT$updateText"
+    $aboutText = "WlanPasswords v$($script:AppVersion)`n`nModern WPF GUI for extracting and managing saved WLAN passwords on Windows.`n`nAuthor: iamrealguexoxo`nGitHub: https://github.com/iamrealguexoxo/wlanpasswords`nLicense: MIT$updateText"
     
     Show-MessageBox -Title "About WlanPasswords" -Message $aboutText
 }
@@ -494,7 +494,7 @@ $window.Add_Loaded({
     # Check version in background
     $updateInfo = Check-Version
     if ($null -ne $updateInfo -and $updateInfo.UpdateAvailable) {
-        $versionText.Text = "v1.0.0 (update available)"
+        $versionText.Text = "v$($script:AppVersion) (update available)"
         $versionText.Foreground = [System.Windows.Media.Brushes]::Red
     }
 })
