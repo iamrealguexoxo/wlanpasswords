@@ -17,6 +17,6 @@ if %errorlevel% neq 0 (
 )
 
 REM Run the PowerShell GUI script
-powershell -NoProfile -ExecutionPolicy Bypass -File "%SCRIPT_DIR%WlanPasswords-GUI.ps1"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%SCRIPT_DIR%scripts\WlanPasswords-GUI.ps1"
 
 exit /b %errorlevel%
