@@ -1,0 +1,32 @@
+# Export files
+wlan_passwords_*.txt
+creds.txt
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# VS Code
+.vscode/
+
+# PowerShell
+*.psm1~
+*.psd1~
+*.ps1~
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+~$*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
