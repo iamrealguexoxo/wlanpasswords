@@ -102,12 +102,16 @@ A Windows-based WLAN password extraction tool that reads all saved WiFi credenti
 
 ```
 wlanpasswords/
-├── WlanPasswords.ps1    # Main PowerShell script
-├── run.bat              # Windows batch launcher
-├── README.md            # This file
-├── README_DE.md         # German documentation
-├── LICENSE              # MIT License
-└── .gitignore           # Git ignore rules
+├── scripts/                 # PowerShell scripts
+│   └── WlanPasswords.ps1    # Main CLI script
+├── setup/                   # Setup and utilities
+│   └── check-updates.ps1    # Version checker
+├── run.bat                  # CLI launcher
+├── check-updates.bat        # Update checker launcher
+├── README.md                # English documentation
+├── README_DE.md             # German documentation
+├── LICENSE                  # MIT License
+└── .gitignore               # Git ignore rules
 ```
 
 ## 📄 Export Format

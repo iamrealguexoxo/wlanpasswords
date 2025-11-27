@@ -18,4 +18,4 @@ exit /b 1
 
 :run_script
 REM Run the PowerShell script
-powershell -ExecutionPolicy Bypass -NoProfile -File "%~dp0WlanPasswords.ps1" %*
+powershell -ExecutionPolicy Bypass -NoProfile -File "%~dp0scripts\WlanPasswords.ps1" %*

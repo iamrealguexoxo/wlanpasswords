@@ -2,6 +2,10 @@
 wlan_passwords_*.txt
 creds.txt
 
+# Release packages (should not be in repo)
+*.zip
+releases/
+
 # Windows
 Thumbs.db
 ehthumbs.db
